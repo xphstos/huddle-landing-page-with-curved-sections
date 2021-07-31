@@ -1,0 +1,18 @@
+@use "sass:color" as *;
+
+$colors: (
+	"white": hsl(0, 0%, 100%),
+	"black": hsl(0, 0%, 0%),
+	"accent": hsl(322, 100%, 66%),
+	"cyan-pale": hsl(207, 100%, 98%),
+	"cyan-dark": hsl(192, 100%, 9%),
+	"blue-grayish": hsl(208, 11%, 55%),
+	"error": hsl(0, 100%, 63%)
+);
+
+// Project Variables
+:root {
+	@each $name, $color in $colors {
+		--#{$name}: #{$color};
+	}
+}

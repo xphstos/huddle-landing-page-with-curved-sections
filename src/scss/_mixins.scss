@@ -1,0 +1,26 @@
+@use "sass:map" as *;
+@use "./variables" as *;
+@use './functions' as *;
+
+// Get CSS Var
+@function v($name, $fallback: null) {
+	@if ($fallback) {
+		@return var(--#{$name}, #{$fallback});
+	} @else {
+		@return var(--#{$name});
+	}
+}
+
+// Get SCSS Color Var
+@function c($name) {
+	@if has-key($colors, $name) {
+		@return get($colors, $name);
+	}
+
+	@return null;
+}
+
+// Fluid All the Things
+@function size($min: 10px, $max: 20px, $breakpoint: 768) {
+	@return clamp(#{$min}, (#{strip($max)} / #{$breakpoint}) * 100vw, #{$max});
+}
